@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>慾茶園群組中心</title></head>
+<body>
+<h1>慾茶園群組中心</h1>
+<select id="category"><option>外送</option><option>茶</option></select>
+<ul id="list"></ul>
+<script>
+const data = [
+  {id:1,cat:'外送',name:'台中外送女神',link:'#'},
+  {id:2,cat:'茶',name:'高雄正妹茶',link:'#'}
+];
+function refresh(){
+  const cat = document.getElementById('category').value;
+  const list = document.getElementById('list'); list.innerHTML='';
+  data.filter(x=>x.cat===cat).forEach(x=>{
+    const li=document.createElement('li');
+    li.innerHTML = `<a href="${x.link}">${x.name}</a>`;
+    list.appendChild(li);
+  });
+}
+document.getElementById('category').onchange = refresh;
+refresh();
+</script>
+</body>
+</html>
